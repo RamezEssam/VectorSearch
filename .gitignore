@@ -1,4 +1,5 @@
 *.bin
 *.txt
+!requirements.txt
 *.json
 secrets.txt
