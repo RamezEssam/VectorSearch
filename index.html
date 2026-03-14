@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Legal Article Search</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="container">
+
+  <h1>Legal Article Search</h1>
+
+  <div class="search-container">
+    <div class="search-box">
+      <input id="queryInput" placeholder="Ask a legal question...">
+      <button onclick="search()">Search</button>
+    </div>
+    <input id="topNInput" type="number" min="1" value="5" title="Number of results">
+  </div>
+
+  <div id="results" class="results"></div>
+
+</div>
+
+<script src="index.js"></script>
+
+</body>
+</html>
