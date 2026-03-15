@@ -14,21 +14,18 @@ model = SentenceTransformer(
 )
 
 
-folder = "extracted_articles"
+folder = "extracted_verses"
 
 texts = []
 ids = []
 
-for fname in sorted(os.listdir(folder)):
-    if fname.endswith(".txt"):
-        path = os.path.join(folder, fname)
-        file = Path(path)
-        if file.stat().st_size == 0:
-            continue
+for book_name in sorted(os.listdir(folder)):
+    for verse in sorted(os.listdir(os.path.join(folder,book_name))):
+        path = os.path.join(folder,book_name, verse)
         with open(path, "r", encoding="utf8") as f:
             text = f.read()
 
-        ids.append(fname)
+        ids.append(f"{book_name}\\{verse}")
         texts.append(text)
 
 print("Embedding", len(texts), "articles")

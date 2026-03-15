@@ -5,7 +5,7 @@ import os
 # -----------------------------
 # CONFIG
 # -----------------------------
-pdf_path = "law.pdf"  
+pdf_path = "law.pdf"
 output_folder = "extracted_articles"
 article_marker = "Article" 
 

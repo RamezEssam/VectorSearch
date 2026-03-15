@@ -12,7 +12,7 @@ EMBEDDINGS_FILE = "embeddings.bin"
 METADATA_FILE = "metadata.json"
 HNSW_INDEX_FILE = "hnsw_index.bin"
 EMBEDDING_MODEL = "BAAI/bge-m3"
-ARTICLES_DIR = "extracted_articles"
+ARTICLES_DIR = "extracted_verses"
 DEFAULT_TOP_K = 5
 hf_token = os.getenv("HF_TOKEN")
 
@@ -99,7 +99,11 @@ class SearchHandler(BaseHTTPRequestHandler):
                 if os.path.exists(filepath):
                     with open(filepath, "r", encoding="utf8") as f:
                         text = f.read()
-                results.append({"title": filename, "text": text, "score": float(1 - dist)})
+                book = os.path.basename(os.path.dirname(filepath))
+                versname = os.path.splitext(os.path.basename(filepath))[0]
+                chapter, verse = versname.split("-")
+                reference = f"{book} {chapter}:{verse}"
+                results.append({"title": reference, "text": text, "score": float(1 - dist)})
 
         response = json.dumps({"results": results}).encode()
 

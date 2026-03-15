@@ -1,6 +1,8 @@
 
 const searchEndpoint = "http://localhost:6969/search";
 
+const input = document.getElementById("queryInput").value;
+
 input.addEventListener("keypress", function(e){
     if(e.key === "Enter"){
         search();
